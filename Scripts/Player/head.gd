@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var mouse_sensitivity: Vector2 = Vector2(0.001, 0.001)
+@export var mouse_sensitivity: Vector2 = Vector2(0.001, 0.1)
 @export var pitch_limit: float = 80.0
 
 var rotation_pitch: float = 0.0

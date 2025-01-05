@@ -1,37 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnqlongto2tk6"]
+[gd_scene load_steps=4 format=3 uid="uid://cnqlongto2tk6"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5wln"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[ext_resource type="MeshLibrary" uid="uid://bknvtqq85brl6" path="res://Asets/Mesh_lib/mesh_lib.meshlib" id="1_u25jl"]
 
-[sub_resource type="Sky" id="Sky_7t6cl"]
-sky_material = SubResource("ProceduralSkyMaterial_p5wln")
-
-[sub_resource type="Environment" id="Environment_0t7mf"]
-background_mode = 2
-sky = SubResource("Sky_7t6cl")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_rq7be"]
+[sub_resource type="BoxMesh" id="BoxMesh_wodoh"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_feliq"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [node name="Base_World" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0t7mf")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.96363, -0.162684, 0.212015, 0, 0.793353, 0.608761, -0.267238, 0.586621, -0.764499, 0, 20.3151, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("PlaneMesh_rq7be")
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("BoxMesh_wodoh")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_feliq")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_u25jl")
+cell_size = Vector3(1, 1, 1)

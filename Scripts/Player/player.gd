@@ -1,17 +1,33 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+var SPEED = 5.0
+var sprint_speed = 10.0
+var original_speed
 const JUMP_VELOCITY = 4.5
+var sprint_slider
+var sprint_drain_amount = 0.5
+var sprint_recharge_amount = 0.2
+@onready var senter = $head/senter
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready():
+	senter.hide()
+	sprint_slider = $UI_Manager/Sprint_slider
+	sprint_slider.hide()
+	original_speed = SPEED
+	
+
 
 
 func _physics_process(delta):
 
 	move_player(delta)
 	move_and_slide()
+	sprint(delta)
 	
 func move_player(delta):
 	# Add the gravity.
@@ -43,3 +59,21 @@ func move_player(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+func sprint(delta):
+#mengatur energi sprint
+	if SPEED == sprint_speed:
+		sprint_slider.value -= sprint_drain_amount * delta
+		if sprint_slider.value == sprint_slider.min_value:
+			SPEED = original_speed
+	if SPEED != sprint_speed:
+		if sprint_slider.value < sprint_slider.max_value:
+			sprint_slider.value += sprint_recharge_amount * delta
+		if sprint_slider.value == sprint_slider.max_value:
+			sprint_slider.hide()
+		
+#input button sprint
+	if Input.is_action_just_pressed("sprint"):
+		SPEED = sprint_speed
+		sprint_slider.show()
+	if Input.is_action_just_released("sprint"):
+		SPEED = original_speed

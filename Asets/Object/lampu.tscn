@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq6io1ikhbx42"]
+
+[ext_resource type="Material" uid="uid://5pd1lbsoxrdv" path="res://Asets/Material/lampu.tres" id="1_orwx7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pqwqt"]
+
+[node name="lampu" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_orwx7")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_pqwqt")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720338, 0)
+shadow_enabled = true
+omni_range = 10.0

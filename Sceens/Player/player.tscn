@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjklwgvsq1ljg"]
+[gd_scene load_steps=7 format=3 uid="uid://cjklwgvsq1ljg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_o2ypo"]
 [ext_resource type="Script" path="res://Scripts/Player/head.gd" id="2_dpndm"]
+[ext_resource type="Script" path="res://Scripts/Player/senter.gd" id="3_fk3yw"]
+[ext_resource type="PackedScene" uid="uid://blljlasnkoknk" path="res://Sceens/UI/ui_manager.tscn" id="4_xa3uv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bcypb"]
 radial_segments = 14
@@ -25,3 +27,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80402, 0)
 script = ExtResource("2_dpndm")
 
 [node name="Camera3D" type="Camera3D" parent="head"]
+
+[node name="senter" type="SpotLight3D" parent="head"]
+visible = false
+spot_range = 15.0
+script = ExtResource("3_fk3yw")
+
+[node name="UI_Manager" parent="." instance=ExtResource("4_xa3uv")]
