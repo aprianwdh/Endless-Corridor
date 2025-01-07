@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjklwgvsq1ljg"]
+[gd_scene load_steps=9 format=3 uid="uid://cjklwgvsq1ljg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_o2ypo"]
 [ext_resource type="Script" path="res://Scripts/Player/head.gd" id="2_dpndm"]
 [ext_resource type="Script" path="res://Scripts/Player/senter.gd" id="3_fk3yw"]
+[ext_resource type="AudioStream" uid="uid://csgg23nsaxfww" path="res://Asets/sfx/toggle_senter.mp3" id="4_agrad"]
+[ext_resource type="Script" path="res://Scripts/Player/RayCastPlayer.gd" id="4_ijieg"]
 [ext_resource type="PackedScene" uid="uid://blljlasnkoknk" path="res://Sceens/UI/ui_manager.tscn" id="4_xa3uv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bcypb"]
@@ -16,6 +18,7 @@ script = ExtResource("1_o2ypo")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_bcypb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -27,10 +30,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80402, 0)
 script = ExtResource("2_dpndm")
 
 [node name="Camera3D" type="Camera3D" parent="head"]
+far = 2000.0
 
 [node name="senter" type="SpotLight3D" parent="head"]
 visible = false
 spot_range = 15.0
 script = ExtResource("3_fk3yw")
+
+[node name="toggle" type="AudioStreamPlayer" parent="head/senter"]
+stream = ExtResource("4_agrad")
+pitch_scale = 2.0
+
+[node name="RayCastPlayer" type="RayCast3D" parent="head"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(2, 0, 0)
+script = ExtResource("4_ijieg")
 
 [node name="UI_Manager" parent="." instance=ExtResource("4_xa3uv")]

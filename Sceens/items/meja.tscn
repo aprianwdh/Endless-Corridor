@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6tk1do7i3c0l"]
+
+[ext_resource type="Material" uid="uid://csccqgx1883k0" path="res://Asets/Material/meja.tres" id="1_u7nfn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f57g7"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6pwgr"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8dpar"]
+
+[node name="meja" type="Node3D"]
+
+[node name="meja" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 0.4, 0, 0, 0, 2, 0, 1.30987, 0)
+material_override = ExtResource("1_u7nfn")
+mesh = SubResource("BoxMesh_f57g7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="meja"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="meja/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6pwgr")
+
+[node name="kaki_meja" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, -1.7371, 0.114521, -0.600356)
+material_override = ExtResource("1_u7nfn")
+mesh = SubResource("CylinderMesh_8dpar")
+
+[node name="kaki_meja4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.737, 0.115, -0.6)
+material_override = ExtResource("1_u7nfn")
+mesh = SubResource("CylinderMesh_8dpar")
+
+[node name="kaki_meja2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, -1.737, 0.115, 0.6)
+material_override = ExtResource("1_u7nfn")
+mesh = SubResource("CylinderMesh_8dpar")
+
+[node name="kaki_meja3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 1.737, 0.115, 0.6)
+material_override = ExtResource("1_u7nfn")
+mesh = SubResource("CylinderMesh_8dpar")

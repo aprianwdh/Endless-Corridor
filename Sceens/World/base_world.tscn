@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnqlongto2tk6"]
+[gd_scene load_steps=6 format=3 uid="uid://cnqlongto2tk6"]
 
-[ext_resource type="MeshLibrary" uid="uid://bknvtqq85brl6" path="res://Asets/Mesh_lib/mesh_lib.meshlib" id="1_u25jl"]
+[ext_resource type="AudioStream" uid="uid://c1ih6wfhhf4xj" path="res://Asets/sfx/Crying_moaning_ambience_3.wav" id="2_qywgn"]
+[ext_resource type="PackedScene" uid="uid://cjklwgvsq1ljg" path="res://Sceens/Player/player.tscn" id="3_472a7"]
+[ext_resource type="Script" path="res://Scripts/cutsceen/cutsceen.gd" id="3_iawfx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wodoh"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_feliq"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qqj7k"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Base_World" type="Node3D"]
 
@@ -20,8 +22,14 @@ mesh = SubResource("BoxMesh_wodoh")
 [node name="StaticBody3D" type="StaticBody3D" parent="floor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_feliq")
+shape = SubResource("ConcavePolygonShape3D_qqj7k")
 
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("1_u25jl")
-cell_size = Vector3(1, 1, 1)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qywgn")
+volume_db = 24.0
+autoplay = true
+
+[node name="player" parent="." instance=ExtResource("3_472a7")]
+
+[node name="cutsceen" type="AnimationPlayer" parent="."]
+script = ExtResource("3_iawfx")

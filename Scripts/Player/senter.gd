@@ -8,5 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("senter"):
+	if Input.is_action_just_pressed("senter") && GlobalScript.have_senter:
 		visible = !visible
+		$toggle.play()

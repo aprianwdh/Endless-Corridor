@@ -30,50 +30,53 @@ func _physics_process(delta):
 	sprint(delta)
 	
 func move_player(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("lompat") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if GlobalScript.player_movable == true:
+		# Add the gravity.
+		if not is_on_floor():
+			velocity.y -= gravity * delta
 
-	# Get the input direction and handle the movement.
-	var input_dir = Input.get_vector("gerak_kiri","gerak_kanan","gerak_bawah","gerak_atas")
+		# Handle jump.
+		if Input.is_action_just_pressed("lompat") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	# Gunakan basis kamera untuk menentukan arah pergerakan.
-	var camera = get_node("head/Camera3D") # Pastikan path ke kamera benar
-	var camera_basis = camera.global_transform.basis
+		# Get the input direction and handle the movement.
+		var input_dir = Input.get_vector("gerak_kiri","gerak_kanan","gerak_bawah","gerak_atas")
 
-	# Ambil arah X dan Z dari kamera untuk pergerakan horizontal.
-	var forward = -camera_basis.z.normalized()
-	var right = camera_basis.x.normalized()
+		# Gunakan basis kamera untuk menentukan arah pergerakan.
+		var camera = get_node("head/Camera3D") # Pastikan path ke kamera benar
+		var camera_basis = camera.global_transform.basis
 
-	# Hitung arah akhir berdasarkan input dan orientasi kamera.
-	var direction = (forward * input_dir.y + right * input_dir.x).normalized()
+		# Ambil arah X dan Z dari kamera untuk pergerakan horizontal.
+		var forward = -camera_basis.z.normalized()
+		var right = camera_basis.x.normalized()
 
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		# Hitung arah akhir berdasarkan input dan orientasi kamera.
+		var direction = (forward * input_dir.y + right * input_dir.x).normalized()
+
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func sprint(delta):
-#mengatur energi sprint
-	if SPEED == sprint_speed:
-		sprint_slider.value -= sprint_drain_amount * delta
-		if sprint_slider.value == sprint_slider.min_value:
+	if GlobalScript.player_movable == true:
+	#mengatur energi sprint
+		if SPEED == sprint_speed:
+			sprint_slider.value -= sprint_drain_amount * delta
+			if sprint_slider.value == sprint_slider.min_value:
+				SPEED = original_speed
+		if SPEED != sprint_speed:
+			if sprint_slider.value < sprint_slider.max_value:
+				sprint_slider.value += sprint_recharge_amount * delta
+			if sprint_slider.value == sprint_slider.max_value:
+				sprint_slider.hide()
+			
+	#input button sprint
+		if Input.is_action_just_pressed("sprint"):
+			SPEED = sprint_speed
+			sprint_slider.show()
+		if Input.is_action_just_released("sprint"):
 			SPEED = original_speed
-	if SPEED != sprint_speed:
-		if sprint_slider.value < sprint_slider.max_value:
-			sprint_slider.value += sprint_recharge_amount * delta
-		if sprint_slider.value == sprint_slider.max_value:
-			sprint_slider.hide()
-		
-#input button sprint
-	if Input.is_action_just_pressed("sprint"):
-		SPEED = sprint_speed
-		sprint_slider.show()
-	if Input.is_action_just_released("sprint"):
-		SPEED = original_speed
