@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://idlrjon5e7dd"]
+
+[ext_resource type="Script" path="res://Scripts/items/key.gd" id="1_kjfod"]
+[ext_resource type="AudioStream" uid="uid://c27ov080imn22" path="res://Asets/sfx/Keys_pick up.wav" id="2_7lbq7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tcv4y"]
+radial_segments = 10
+
+[sub_resource type="BoxMesh" id="BoxMesh_emqwt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0wsf"]
+size = Vector3(2.52686, 0.502563, 1)
+
+[node name="key" type="StaticBody3D"]
+script = ExtResource("1_kjfod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_tcv4y")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 0.3, -0.957356, 0, 0)
+mesh = SubResource("BoxMesh_emqwt")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.4, -1.26715, 0, 0.350225)
+mesh = SubResource("BoxMesh_emqwt")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.4, -1.80328, 0, 0.350225)
+mesh = SubResource("BoxMesh_emqwt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.763428, -0.0571899, 0)
+shape = SubResource("BoxShape3D_y0wsf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7lbq7")
+volume_db = 24.0
