@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtscjf0qnv8ft"]
+[gd_scene load_steps=25 format=3 uid="uid://dtscjf0qnv8ft"]
 
 [ext_resource type="Script" path="res://Scripts/Core/test_world.gd" id="1_5nuu6"]
 [ext_resource type="Material" uid="uid://b3rfw12cou2ft" path="res://Asets/Material/floor.tres" id="2_56oa0"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://j7ttnehxtb84" path="res://Sceens/items/senter_model.tscn" id="7_x7ke5"]
 [ext_resource type="PackedScene" uid="uid://ypxt56ygx441" path="res://Sceens/items/doors.tscn" id="8_w6sd3"]
 [ext_resource type="PackedScene" uid="uid://idlrjon5e7dd" path="res://Sceens/items/key.tscn" id="10_c24bg"]
+[ext_resource type="PackedScene" uid="uid://bfioykjwqn2nq" path="res://Sceens/items/paper.tscn" id="11_rhoi5"]
+[ext_resource type="Material" uid="uid://bsl5vqfqdsnr7" path="res://Asets/Texture/paper1.tres" id="12_qivdk"]
+[ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="13_h8rsy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdnhx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -84,7 +87,7 @@ mesh = SubResource("BoxMesh_077ln")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_feliq")
 
-[node name="player2" parent="." instance=ExtResource("2_gc4y4")]
+[node name="player" parent="." instance=ExtResource("2_gc4y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94888, 0.4114, 27.6049)
 
 [node name="wall" type="Node3D" parent="."]
@@ -204,3 +207,11 @@ transform = Transform3D(0.106264, 0, 1.98868, 0, 2, 0, -0.994338, 0, 0.212528, -
 
 [node name="key" parent="." instance=ExtResource("10_c24bg")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10.5906, 1.48863, 19.0168)
+
+[node name="paper" parent="." instance=ExtResource("11_rhoi5")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -10.9343, 1.46124, 20.4259)
+material_paper = ExtResource("12_qivdk")
+texture_ui_paper = ExtResource("13_h8rsy")
+
+[connection signal="paper_off" from="paper" to="player" method="_on_paper_paper_off"]
+[connection signal="paper_oon" from="paper" to="player" method="_on_paper_paper_oon"]

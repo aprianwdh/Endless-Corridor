@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://blljlasnkoknk"]
+[gd_scene load_steps=3 format=3 uid="uid://blljlasnkoknk"]
+
+[ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="2_lyerg"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_knmf6"]
 
@@ -28,3 +30,12 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 40
 text = "[E] Interact"
+
+[node name="TexturePaper" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 428.0
+offset_top = 112.0
+offset_right = 684.0
+offset_bottom = 444.0
+texture = ExtResource("2_lyerg")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfioykjwqn2nq"]
+
+[ext_resource type="Script" path="res://Scripts/items/paper.gd" id="1_d3gng"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e8bo3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5xm6"]
+size = Vector3(2.22192, 0.555298, 1)
+
+[node name="paper" type="StaticBody3D"]
+script = ExtResource("1_d3gng")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("PlaneMesh_e8bo3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00671387, 0.0305786, 0)
+shape = SubResource("BoxShape3D_k5xm6")

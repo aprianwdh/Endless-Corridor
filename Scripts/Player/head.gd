@@ -7,7 +7,8 @@ var mouse_mode : bool = false
 var rotation_pitch: float = 0.0
 
 func _process(delta):
-	camera_player_movable()
+	#camera_player_movable()
+	pass
 	
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -33,8 +34,11 @@ func _input(_event: InputEvent):
 		elif mouse_mode == false:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func camera_player_movable():
-	if GlobalScript.player_movable == true:
-		$Camera3D.current = true
-	else :
-		$Camera3D.current = false
+#func camera_player_movable():
+	#if GlobalScript.player_movable == true:
+		#$Camera3D.current = true
+	#else :
+		#$Camera3D.current = false
+		
+
+		

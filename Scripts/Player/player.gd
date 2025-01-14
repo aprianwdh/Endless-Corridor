@@ -9,6 +9,7 @@ var sprint_slider
 var sprint_drain_amount = 0.5
 var sprint_recharge_amount = 0.2
 @onready var senter = $head/senter
+@onready var texture_paper = $UI_Manager/TexturePaper
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -80,3 +81,11 @@ func sprint(delta):
 			sprint_slider.show()
 		if Input.is_action_just_released("sprint"):
 			SPEED = original_speed
+
+
+func _on_paper_paper_oon():
+	texture_paper.show()
+
+
+func _on_paper_paper_off():
+	texture_paper.hide()
