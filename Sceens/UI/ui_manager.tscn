@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://blljlasnkoknk"]
-
-[ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="2_lyerg"]
+[gd_scene load_steps=2 format=3 uid="uid://blljlasnkoknk"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_knmf6"]
 
@@ -38,4 +36,4 @@ offset_left = 428.0
 offset_top = 112.0
 offset_right = 684.0
 offset_bottom = 444.0
-texture = ExtResource("2_lyerg")
+expand_mode = 1

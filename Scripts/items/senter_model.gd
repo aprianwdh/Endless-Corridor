@@ -1,5 +1,6 @@
 extends Node3D
 
+@onready var animation_player = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,5 +12,8 @@ func _ready():
 	#interact()
 		
 func interact():
+	AudioManager.play_pickup()
 	GlobalScript.have_senter = true
+	$".".hide()
+	get_tree().create_timer(1).timeout
 	queue_free()
