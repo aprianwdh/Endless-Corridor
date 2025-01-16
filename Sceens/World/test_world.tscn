@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtscjf0qnv8ft"]
+[gd_scene load_steps=33 format=3 uid="uid://dtscjf0qnv8ft"]
 
 [ext_resource type="Script" path="res://Scripts/Core/test_world.gd" id="1_5nuu6"]
 [ext_resource type="Material" uid="uid://b3rfw12cou2ft" path="res://Asets/Material/floor.tres" id="2_56oa0"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bfioykjwqn2nq" path="res://Sceens/items/paper.tscn" id="11_rhoi5"]
 [ext_resource type="Material" uid="uid://bsl5vqfqdsnr7" path="res://Asets/Texture/paper1.tres" id="12_qivdk"]
 [ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="13_h8rsy"]
+[ext_resource type="PackedScene" uid="uid://b3wicpb5ft5la" path="res://Sceens/World/trigger.tscn" id="14_to2s4"]
+[ext_resource type="Texture2D" uid="uid://xvwxb0vu8pvh" path="res://Asets/2d/face_scare.jpg" id="15_in38f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdnhx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -51,6 +53,101 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g61kd"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytp0x"]
+size = Vector3(3.71643, 2.4325, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_285ly"]
+transparency = 1
+albedo_texture = ExtResource("15_in38f")
+albedo_texture_force_srgb = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_57dta"]
+
+[sub_resource type="Animation" id="Animation_ti7mf"]
+resource_name = "peek"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jumpscare1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.79186, 1.67659, -7.94957), Vector3(-7.87303, 1.67659, -7.94957), Vector3(-6.7107, 1.67659, -7.94957)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("jumpscare1:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.785398)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jumpscare1:visible")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2b0q8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jumpscare1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.92529, 1.67659, -7.94957)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("jumpscare1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jumpscare1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_osilx"]
+_data = {
+"RESET": SubResource("Animation_2b0q8"),
+"peek": SubResource("Animation_ti7mf")
+}
+
 [node name="Test_World" type="Node3D"]
 script = ExtResource("1_5nuu6")
 
@@ -74,7 +171,7 @@ shape = SubResource("ConcavePolygonShape3D_qqj7k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ksvgx")
-volume_db = 24.0
+volume_db = 10.0
 autoplay = true
 
 [node name="floor2" type="MeshInstance3D" parent="."]
@@ -202,9 +299,6 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.0797, 1.52414, 19.8
 [node name="doors" parent="." instance=ExtResource("8_w6sd3")]
 transform = Transform3D(0.106264, 0, 1.98868, 0, 2, 0, -0.994338, 0, 0.212528, -9.46453, 0.74133, 13.3617)
 
-[node name="doors2" parent="." instance=ExtResource("8_w6sd3")]
-transform = Transform3D(0.106264, 0, 1.98868, 0, 2, 0, -0.994338, 0, 0.212528, -9.46453, 0.74133, 9.75974)
-
 [node name="key" parent="." instance=ExtResource("10_c24bg")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10.5906, 1.48863, 19.0168)
 
@@ -213,5 +307,27 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -10.9343, 1.46124, 20.4
 material_paper = ExtResource("12_qivdk")
 texture_ui_paper = ExtResource("13_h8rsy")
 
+[node name="trigger" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("14_to2s4")]
+animation = NodePath("../jumpscare/AnimationPlayer")
+anim_name = "peek"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4418, 1.7756, 0)
+shape = SubResource("BoxShape3D_ytp0x")
+
+[node name="jumpscare" type="Node3D" parent="."]
+
+[node name="jumpscare1" type="MeshInstance3D" parent="jumpscare"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92529, 1.67659, -7.94957)
+visible = false
+material_overlay = SubResource("StandardMaterial3D_285ly")
+mesh = SubResource("QuadMesh_57dta")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="jumpscare"]
+libraries = {
+"": SubResource("AnimationLibrary_osilx")
+}
+
 [connection signal="paper_off" from="paper" to="player" method="_on_paper_paper_off"]
 [connection signal="paper_oon" from="paper" to="player" method="_on_paper_paper_oon"]
+[connection signal="body_entered" from="trigger" to="trigger" method="_on_body_entered"]

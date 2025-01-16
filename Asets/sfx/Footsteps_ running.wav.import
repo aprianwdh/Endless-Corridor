@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgasodidgolfi"
+path="res://.godot/imported/Footsteps_ running.wav-060dcb71dbe976593c194eaa1cd3836c.sample"
+
+[deps]
+
+source_file="res://Asets/sfx/Footsteps_ running.wav"
+dest_files=["res://.godot/imported/Footsteps_ running.wav-060dcb71dbe976593c194eaa1cd3836c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

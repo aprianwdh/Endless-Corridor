@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ob84sownpugv"]
+[gd_scene load_steps=7 format=3 uid="uid://ob84sownpugv"]
 
 [ext_resource type="Script" path="res://Scripts/Core/audio_manager.gd" id="1_jwjdv"]
 [ext_resource type="AudioStream" uid="uid://ckltccaou0sqn" path="res://Asets/sfx/item-pickup.mp3" id="1_vh5rw"]
 [ext_resource type="AudioStream" uid="uid://c27ov080imn22" path="res://Asets/sfx/Keys_pick up.wav" id="2_3n2c3"]
 [ext_resource type="AudioStream" uid="uid://dpsi4bosmqhq6" path="res://Asets/sfx/paper_pickup_sound.mp3" id="3_in1n5"]
+[ext_resource type="AudioStream" uid="uid://cgasodidgolfi" path="res://Asets/sfx/Footsteps_ running.wav" id="5_bqsw8"]
+[ext_resource type="AudioStream" uid="uid://bxpi20q0ipqcd" path="res://Asets/sfx/Footsteps_walking.wav" id="6_qubc4"]
 
 [node name="audio_manager" type="Node2D"]
 script = ExtResource("1_jwjdv")
@@ -18,4 +20,12 @@ volume_db = 24.0
 
 [node name="paper_pickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_in1n5")
+volume_db = 24.0
+
+[node name="run" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bqsw8")
+volume_db = 24.0
+
+[node name="walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qubc4")
 volume_db = 24.0

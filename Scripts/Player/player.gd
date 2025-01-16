@@ -29,6 +29,7 @@ func _physics_process(delta):
 	move_player(delta)
 	move_and_slide()
 	sprint(delta)
+	#Audio_walk_and_sprint()
 	
 func move_player(delta):
 
@@ -79,8 +80,10 @@ func sprint(delta):
 		if Input.is_action_just_pressed("sprint"):
 			SPEED = sprint_speed
 			sprint_slider.show()
+			AudioManager.play_run()
 		if Input.is_action_just_released("sprint"):
 			SPEED = original_speed
+			AudioManager.stop_run()
 
 
 func _on_paper_paper_oon():
@@ -89,3 +92,13 @@ func _on_paper_paper_oon():
 
 func _on_paper_paper_off():
 	texture_paper.hide()
+	
+func Audio_walk_and_sprint():
+	if SPEED == sprint_speed:
+		AudioManager.play_run()
+		AudioManager.stop_walk()
+	elif SPEED != sprint_speed:
+		AudioManager.stop_run()
+		AudioManager.play_walk()
+	
+		
