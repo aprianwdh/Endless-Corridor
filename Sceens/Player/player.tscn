@@ -35,7 +35,8 @@ far = 2000.0
 
 [node name="senter" type="SpotLight3D" parent="head"]
 visible = false
-spot_range = 15.0
+light_size = 1.0
+spot_range = 25.0
 script = ExtResource("3_fk3yw")
 
 [node name="toggle" type="AudioStreamPlayer" parent="head/senter"]

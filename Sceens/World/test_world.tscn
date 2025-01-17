@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtscjf0qnv8ft"]
+[gd_scene load_steps=34 format=3 uid="uid://dtscjf0qnv8ft"]
 
 [ext_resource type="Script" path="res://Scripts/Core/test_world.gd" id="1_5nuu6"]
 [ext_resource type="Material" uid="uid://b3rfw12cou2ft" path="res://Asets/Material/floor.tres" id="2_56oa0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://bsl5vqfqdsnr7" path="res://Asets/Texture/paper1.tres" id="12_qivdk"]
 [ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="13_h8rsy"]
 [ext_resource type="PackedScene" uid="uid://b3wicpb5ft5la" path="res://Sceens/World/trigger.tscn" id="14_to2s4"]
+[ext_resource type="AudioStream" uid="uid://7c3j6bit0b4o" path="res://Asets/sfx/Child laugh.wav" id="15_3rlo4"]
 [ext_resource type="Texture2D" uid="uid://xvwxb0vu8pvh" path="res://Asets/2d/face_scare.jpg" id="15_in38f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdnhx"]
@@ -25,7 +26,7 @@ sky_material = SubResource("ProceduralSkyMaterial_mdnhx")
 
 [sub_resource type="Environment" id="Environment_6tv26"]
 background_mode = 1
-background_color = Color(0.172833, 0.172833, 0.172833, 1)
+background_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 sky = SubResource("Sky_slxc4")
 tonemap_mode = 3
 tonemap_white = 16.0
@@ -62,6 +63,45 @@ albedo_texture = ExtResource("15_in38f")
 albedo_texture_force_srgb = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_57dta"]
+
+[sub_resource type="Animation" id="Animation_2b0q8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jumpscare1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.92529, 1.67659, -7.94957)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("jumpscare1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("jumpscare1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ti7mf"]
 resource_name = "peek"
@@ -101,45 +141,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_2b0q8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("jumpscare1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-6.92529, 1.67659, -7.94957)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("jumpscare1:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("jumpscare1:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osilx"]
@@ -238,6 +239,7 @@ shape = SubResource("ConcavePolygonShape3D_ckqsn")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="obstecle"]
 transform = Transform3D(10, 0, 0, 0, 8.84649, 0, 0, 0, 39.3066, -16.3396, 3.69751, 9.09035)
 material_override = ExtResource("4_div46")
+cast_shadow = 0
 mesh = SubResource("BoxMesh_el4mq")
 skeleton = NodePath("../..")
 
@@ -249,6 +251,7 @@ shape = SubResource("ConcavePolygonShape3D_mf7ik")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="obstecle"]
 transform = Transform3D(10, 0, 0, 0, 8.84649, 0, 0, 0, 39.3066, -2.5062, 4.67166, 11.7112)
 material_override = ExtResource("4_div46")
+cast_shadow = 0
 mesh = SubResource("BoxMesh_el4mq")
 skeleton = NodePath("../..")
 
@@ -307,13 +310,18 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -10.9343, 1.46124, 20.4
 material_paper = ExtResource("12_qivdk")
 texture_ui_paper = ExtResource("13_h8rsy")
 
-[node name="trigger" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("14_to2s4")]
+[node name="trigger" parent="." node_paths=PackedStringArray("animation", "sound_trigger") instance=ExtResource("14_to2s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.43594, 1.66095, 0)
 animation = NodePath("../jumpscare/AnimationPlayer")
 anim_name = "peek"
+sound_trigger = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4418, 1.7756, 0)
 shape = SubResource("BoxShape3D_ytp0x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="trigger"]
+stream = ExtResource("15_3rlo4")
+volume_db = 24.0
 
 [node name="jumpscare" type="Node3D" parent="."]
 
