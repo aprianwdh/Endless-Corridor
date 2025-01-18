@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnqlongto2tk6"]
+[gd_scene load_steps=7 format=3 uid="uid://cnqlongto2tk6"]
 
 [ext_resource type="AudioStream" uid="uid://c1ih6wfhhf4xj" path="res://Asets/sfx/Crying_moaning_ambience_3.wav" id="2_qywgn"]
 [ext_resource type="PackedScene" uid="uid://cjklwgvsq1ljg" path="res://Sceens/Player/player.tscn" id="3_472a7"]
 [ext_resource type="Script" path="res://Scripts/cutsceen/cutsceen.gd" id="3_iawfx"]
+[ext_resource type="PackedScene" uid="uid://yons3c8atxwe" path="res://Sceens/UI/pause_menu.tscn" id="4_xkok1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_wodoh"]
 
@@ -33,3 +34,5 @@ autoplay = true
 
 [node name="cutsceen" type="AnimationPlayer" parent="."]
 script = ExtResource("3_iawfx")
+
+[node name="pause_menu" parent="." instance=ExtResource("4_xkok1")]

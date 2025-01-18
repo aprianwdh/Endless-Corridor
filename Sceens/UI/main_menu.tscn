@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqfqjslo53mt7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_7el30"]
+[ext_resource type="Texture2D" uid="uid://bj32a1wr0dtna" path="res://icon.svg" id="1_cddlb"]
+[ext_resource type="PackedScene" uid="uid://dtscjf0qnv8ft" path="res://Sceens/World/test_world.tscn" id="2_5tvq8"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7el30")
+sceen_tujuan = ExtResource("2_5tvq8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 86.0
+offset_right = 784.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 64
+text = "MAIN MENU"
+
+[node name="version" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 6.0
+offset_right = 1131.0
+offset_bottom = 29.0
+text = "V 0.0"
+
+[node name="dev name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 612.0
+offset_right = 1130.0
+offset_bottom = 635.0
+text = "Made by Apriw"
+
+[node name="dev icon" type="Sprite2D" parent="."]
+position = Vector2(53, 598)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cddlb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT "
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]

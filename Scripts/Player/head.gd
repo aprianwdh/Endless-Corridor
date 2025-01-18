@@ -25,14 +25,14 @@ func _unhandled_input(event: InputEvent):
 
 			# Terapkan rotasi pitch
 			rotation.x = deg_to_rad(rotation_pitch)
-
-func _input(_event: InputEvent):
-	if Input.is_action_just_pressed("ui_cancel"):
-		mouse_mode = !mouse_mode
-		if mouse_mode == true:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		elif mouse_mode == false:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#
+#func _input(_event: InputEvent):
+	#if Input.is_action_just_pressed("paused"):
+		#mouse_mode = !mouse_mode
+		#if mouse_mode == true:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#elif mouse_mode == false:
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #func camera_player_movable():
 	#if GlobalScript.player_movable == true:
