@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dtscjf0qnv8ft"]
+[gd_scene load_steps=37 format=3 uid="uid://dtscjf0qnv8ft"]
 
 [ext_resource type="Script" path="res://Scripts/Core/test_world.gd" id="1_5nuu6"]
 [ext_resource type="Material" uid="uid://b3rfw12cou2ft" path="res://Asets/Material/floor.tres" id="2_56oa0"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://7c3j6bit0b4o" path="res://Asets/sfx/Child laugh.wav" id="15_3rlo4"]
 [ext_resource type="Texture2D" uid="uid://xvwxb0vu8pvh" path="res://Asets/2d/face_scare.jpg" id="15_in38f"]
 [ext_resource type="PackedScene" uid="uid://yons3c8atxwe" path="res://Sceens/UI/pause_menu.tscn" id="17_g1ym6"]
+[ext_resource type="PackedScene" uid="uid://dxmmrk3pqtyq6" path="res://Sceens/enemy/enemy.tscn" id="18_hd0wh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdnhx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,8 +31,6 @@ background_mode = 1
 background_color = Color(0.0177324, 0.0177324, 0.0177324, 1)
 sky = SubResource("Sky_slxc4")
 tonemap_mode = 3
-tonemap_white = 16.0
-glow_enabled = true
 glow_bloom = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytp0x"]
@@ -132,8 +131,6 @@ _data = {
 [sub_resource type="NavigationMesh" id="NavigationMesh_mc76c"]
 vertices = PackedVector3Array(-15.5, 0.7, -22.2, -14.9, 0.7, -22.2, -15, 0.7, -28.9, -15.8, 0.7, -22, -15.5, 0.7, -22.2, -15, 0.7, -28.9, -28.9, 0.7, -28.9, -28.9, 0.7, -21, -28.9, 0.7, -21, -15.9, 0.7, -21, -15.8, 0.7, -22, -28.9, 7.5, -9.9, -21.9, 7.5, -9.9, -21.9, 7.5, -10.7, -28.9, 7.5, -9.9, -21.9, 7.5, -10.7, -21.5, 7.5, -11.1, -28.9, 7.5, -28.9, -21.5, 7.5, -11.1, -12, 7.5, -11.1, -12, 7.5, -28.9, -28.9, 7.5, -28.9, -14.9, 0.7, -22.2, -5.8, 0.7, -22.2, -5.7, 0.7, -28.9, -15, 0.7, -28.9, -10.8, 7.5, -7.6, -8.1, 7.5, -7.5, -8.1, 7.5, -8.1, -10.8, 7.5, -7.6, -8.1, 7.5, -8.1, -7.7, 7.5, -8.5, -10.8, 7.5, -10.7, -12, 7.5, -28.9, -12, 7.5, -11.1, -11.2, 7.5, -11.1, -11.2, 7.5, -11.1, -10.8, 7.5, -10.7, -7.7, 7.5, -8.5, 1.8, 7.5, -8.5, 1.8, 7.5, -28.9, -12, 7.5, -28.9, 7.5, 0.7, -22.2, 8.1, 0.7, -22.2, 8, 0.7, -28.9, -5.7, 0.7, -28.9, -5.8, 0.7, -22.2, -5.2, 0.7, -22.2, -4.9, 0.7, -22, 7.2, 0.7, -22, 7.5, 0.7, -22.2, 8, 0.7, -28.9, -5.7, 0.7, -28.9, -5.2, 0.7, -22.2, -4.9, 0.7, -22, -4.8, 0.7, -21.1, 7.1, 0.7, -21.1, 7.2, 0.7, -22, 1.8, 7.5, -28.9, 1.8, 7.5, -8.5, 2.8, 7.5, -8.4, 1.8, 7.5, -28.9, 2.8, 7.5, -8.4, 3, 7.5, -8.1, 29, 7.5, -7.3, 29, 7.5, -28.9, 3, 7.5, -8.1, 3, 7.5, -7.3, 29, 7.5, -7.3, 8.1, 0.7, -22.2, 17.2, 0.7, -22.2, 17.3, 0.7, -28.9, 8, 0.7, -28.9, 17.3, 0.7, -28.9, 17.2, 0.7, -22.2, 17.8, 0.7, -22.2, 17.3, 0.7, -28.9, 17.8, 0.7, -22.2, 18.1, 0.7, -22, 29, 0.7, -21, 29, 0.7, -28.9, 18.1, 0.7, -22, 18.2, 0.7, -21, 29, 0.7, -21, -14.8, 0.7, -21.1, -14.8, 0.7, -12.2, -5.9, 0.7, -12.2, -5.9, 0.7, -21.1, -5.2, 0.7, -11.1, -6, 0.7, -11.1, -6, 0.7, -8.5, -4.8, 0.7, -11.5, -5.2, 0.7, -11.1, -6, 0.7, -8.5, 2.6, 0.7, -8.5, 2.9, 0.7, -8.2, 7.4, 0.7, -11.2, 7.1, 0.7, -11.5, 2.6, 0.7, -8.5, -4.8, 0.7, -11.5, 2.6, 0.7, -8.5, 7.1, 0.7, -11.5, 7.1, 0.7, -21.1, -4.8, 0.7, -21.1, 8.2, 0.7, -21.1, 8.2, 0.7, -12.2, 17.1, 0.7, -12.2, 17.1, 0.7, -21.1, -21.5, 0.7, -11.1, -15.5, 0.7, -11.1, -15.9, 0.7, -11.5, -28.9, 0.7, -9.9, -21.9, 0.7, -9.9, -21.9, 0.7, -10.7, -28.9, 0.7, -9.9, -21.9, 0.7, -10.7, -21.5, 0.7, -11.1, -15.9, 0.7, -21, -28.9, 0.7, -21, -21.5, 0.7, -11.1, -15.9, 0.7, -11.5, -15.9, 0.7, -21, 18.2, 0.7, -12.3, 29, 0.7, -12.3, 29, 0.7, -21, 18.2, 0.7, -21, 29, 0.7, -12.3, 18.2, 0.7, -12.3, 18.2, 0.7, -11.5, 29, 0.7, -12.3, 18.2, 0.7, -11.5, 17.8, 0.7, -11.1, 17.8, 0.7, -11.1, 7.4, 0.7, -11.2, 2.9, 0.7, -8.2, 29, 0.7, -12.3, 17.8, 0.7, -11.1, 2.9, 0.7, -8.2, 3, 0.7, 29, 29, 0.7, 29, -10.8, 0.7, -7.6, -8.1, 0.7, -7.5, -8.1, 0.7, -8.1, -7.7, 0.7, -8.5, -6, 0.7, -8.5, -6, 0.7, -11.1, -11.2, 0.7, -11.1, -10.8, 0.7, -10.7, -10.8, 0.7, -7.6, -8.1, 0.7, -8.1, -7.7, 0.7, -8.5, -10.8, 0.7, -10.7, -20.9, 8.3, -10.1, -20.9, 8.3, 28.3, -11.8, 8.3, 28.3, -11.8, 8.3, -10.1, -20.8, 0.7, -10, -20.8, 0.7, 28.2, -11.9, 0.7, 28.2, -11.9, 0.7, -10, -21.9, 0.7, -9.9, -28.9, 0.7, -9.9, -28.9, 0.7, 29, -21.8, 0.7, 29, -21.9, 7.5, -9.9, -28.9, 7.5, -9.9, -28.9, 7.5, 29, -21.8, 7.5, 29, -10, 0.7, 18.4, -9.9, 0.7, 19.4, -8.1, 0.7, 19.4, -8.1, 0.7, -7.5, -8.1, 0.7, -7.5, -10.8, 0.7, -7.6, -10.8, 0.7, 18.2, -10, 0.7, 18.4, -8.1, 7.5, -7.5, -10.8, 7.5, -7.6, -10.9, 7.5, 29, -8.1, 7.5, 29, -7.1, 9.2, -7.5, -7.1, 9.2, 29, 2, 9.2, 29, 2, 9.2, -7.5, -7, 0.7, -7.4, -7, 0.7, 29, 1.9, 0.7, 29, 1.9, 0.7, -7.4, -7, 7.5, -7.4, -7, 7.5, 29, 1.9, 7.5, 29, 1.9, 7.5, -7.4, 29, 7.5, -7.3, 3, 7.5, -7.3, 3, 7.5, 29, 29, 7.5, 29, -8.1, 0.7, 19.4, -9.9, 0.7, 19.4, -9.9, 0.7, 20.9, -8.1, 0.7, 19.4, -9.9, 0.7, 20.9, -10.3, 0.7, 21.3, -10.9, 0.7, 29, -8.1, 0.7, 29, -10.3, 0.7, 21.3, -10.8, 0.7, 21.3, -10.9, 0.7, 29)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(6, 3, 7), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(22, 25, 23), PackedInt32Array(23, 25, 24), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(35, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(39, 36, 40), PackedInt32Array(40, 36, 41), PackedInt32Array(44, 43, 42), PackedInt32Array(47, 46, 45), PackedInt32Array(53, 52, 48), PackedInt32Array(48, 52, 49), PackedInt32Array(49, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 54), PackedInt32Array(60, 59, 58), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 65), PackedInt32Array(63, 65, 64), PackedInt32Array(66, 68, 67), PackedInt32Array(70, 69, 71), PackedInt32Array(71, 69, 72), PackedInt32Array(75, 74, 73), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(81, 83, 82), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(92, 91, 93), PackedInt32Array(93, 91, 94), PackedInt32Array(98, 97, 95), PackedInt32Array(95, 97, 96), PackedInt32Array(100, 99, 101), PackedInt32Array(101, 99, 103), PackedInt32Array(101, 103, 102), PackedInt32Array(107, 106, 104), PackedInt32Array(104, 106, 105), PackedInt32Array(110, 109, 108), PackedInt32Array(113, 112, 111), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 118), PackedInt32Array(116, 118, 117), PackedInt32Array(121, 120, 119), PackedInt32Array(125, 124, 122), PackedInt32Array(122, 124, 123), PackedInt32Array(128, 127, 126), PackedInt32Array(131, 130, 129), PackedInt32Array(132, 134, 133), PackedInt32Array(136, 135, 137), PackedInt32Array(137, 135, 138), PackedInt32Array(138, 135, 139), PackedInt32Array(142, 141, 140), PackedInt32Array(144, 143, 145), PackedInt32Array(145, 143, 147), PackedInt32Array(145, 147, 146), PackedInt32Array(149, 148, 150), PackedInt32Array(150, 148, 151), PackedInt32Array(155, 154, 152), PackedInt32Array(152, 154, 153), PackedInt32Array(159, 158, 156), PackedInt32Array(156, 158, 157), PackedInt32Array(161, 160, 162), PackedInt32Array(162, 160, 163), PackedInt32Array(165, 164, 166), PackedInt32Array(166, 164, 167), PackedInt32Array(169, 168, 170), PackedInt32Array(170, 168, 171), PackedInt32Array(175, 174, 172), PackedInt32Array(172, 174, 173), PackedInt32Array(176, 179, 177), PackedInt32Array(177, 179, 178), PackedInt32Array(183, 182, 180), PackedInt32Array(180, 182, 181), PackedInt32Array(187, 186, 184), PackedInt32Array(184, 186, 185), PackedInt32Array(191, 190, 188), PackedInt32Array(188, 190, 189), PackedInt32Array(195, 194, 192), PackedInt32Array(192, 194, 193), PackedInt32Array(198, 197, 196), PackedInt32Array(200, 199, 201), PackedInt32Array(201, 199, 203), PackedInt32Array(201, 203, 202), PackedInt32Array(206, 205, 204)]
-cell_size = 0.1
-cell_height = 0.1
 
 [sub_resource type="BoxMesh" id="BoxMesh_wodoh"]
 
@@ -173,7 +170,7 @@ volume_db = 10.0
 autoplay = true
 
 [node name="player" parent="." instance=ExtResource("2_gc4y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94888, 0.4114, 27.6049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0475, 0.4114, 27.6049)
 
 [node name="lampu" type="Node3D" parent="."]
 
@@ -182,6 +179,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.07274, 0)
 
 [node name="lampu2" parent="lampu" instance=ExtResource("5_yvk6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00464, 6.07274, 0)
+
+[node name="lampu4" parent="lampu" instance=ExtResource("5_yvk6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4947, 6.07274, 0)
+
+[node name="lampu5" parent="lampu" instance=ExtResource("5_yvk6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4947, 6.07274, 13.9229)
+
+[node name="lampu6" parent="lampu" instance=ExtResource("5_yvk6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4947, 6.07274, 22.1011)
+
+[node name="lampu7" parent="lampu" instance=ExtResource("5_yvk6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7411, 6.07274, 22.1011)
+
+[node name="lampu8" parent="lampu" instance=ExtResource("5_yvk6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23514, 6.07274, 22.1011)
 
 [node name="lampu3" parent="lampu" instance=ExtResource("5_yvk6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.51821, 6.07274, 19.0165)
@@ -349,6 +361,13 @@ shape = SubResource("ConcavePolygonShape3D_ckqsn")
 
 [node name="meja" parent="NavigationRegion3D" instance=ExtResource("6_j4htx")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -10.9801, 0.684222, 19.7068)
+
+[node name="enemy" parent="." node_paths=PackedStringArray("nav", "targets") instance=ExtResource("18_hd0wh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.81174, 1.62344, 10.9949)
+nav = NodePath("NavigationAgent3D")
+targets = NodePath("../player")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="enemy"]
 
 [connection signal="paper_off" from="paper" to="player" method="_on_paper_paper_off"]
 [connection signal="paper_oon" from="paper" to="player" method="_on_paper_paper_oon"]
