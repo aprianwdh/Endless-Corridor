@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blljlasnkoknk"]
+[gd_scene load_steps=4 format=3 uid="uid://blljlasnkoknk"]
+
+[ext_resource type="Texture2D" uid="uid://dvo13wn051vxm" path="res://Asets/2d/low.png" id="1_yyy6y"]
+[ext_resource type="Texture2D" uid="uid://c54uasqhd0xqw" path="res://Asets/2d/full.png" id="2_wamji"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_knmf6"]
 
@@ -37,3 +40,23 @@ offset_top = 112.0
 offset_right = 684.0
 offset_bottom = 444.0
 expand_mode = 1
+
+[node name="battery" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="texture_battery" type="TextureProgressBar" parent="battery"]
+layout_mode = 0
+offset_left = 979.0
+offset_top = 136.0
+offset_right = 1011.0
+offset_bottom = 168.0
+rotation = -1.5708
+scale = Vector2(5, 5)
+max_value = 1.0
+step = 0.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("1_yyy6y")
+texture_progress = ExtResource("2_wamji")
