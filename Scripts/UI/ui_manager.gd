@@ -1,11 +1,9 @@
 extends Control
 
-@onready var texture_paper = $TexturePaper
+
+@onready var texture_battery = $battery/texture_battery
 
 
-func _process(delta):
-	if GlobalScript.paper_on == true:
-		texture_paper.show()
-	else :
-		$TexturePaper.hide()
+#func _process(_delta):
+	#GlobalScript
 		

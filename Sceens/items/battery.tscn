@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfbejeyefsgyv"]
+
+[ext_resource type="Material" uid="uid://b7t2kjel5kd2h" path="res://Asets/Material/senter_top.tres" id="1_ia1hv"]
+[ext_resource type="Script" path="res://Scripts/items/battery.gd" id="1_plcsn"]
+[ext_resource type="Material" uid="uid://by5es77xvalew" path="res://Asets/Material/senter.tres" id="2_bx57u"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0j2qo"]
+radial_segments = 14
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3beq0"]
+size = Vector3(1, 2.10376, 1)
+
+[node name="battery" type="StaticBody3D"]
+script = ExtResource("1_plcsn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ia1hv")
+mesh = SubResource("CylinderMesh_0j2qo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.2, 0, 0, 0, 0.5, 0, 0.973342, 0)
+material_override = ExtResource("2_bx57u")
+mesh = SubResource("CylinderMesh_0j2qo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545654, 0)
+shape = SubResource("BoxShape3D_3beq0")

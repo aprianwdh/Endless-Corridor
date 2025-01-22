@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	texture_battery.visible = visible
+	texture_battery.visible = GlobalScript.have_senter
 	if Input.is_action_just_pressed("senter") && GlobalScript.have_senter && texture_battery.value != 0:
 		visible = !visible
 		$toggle.play()
@@ -19,5 +19,9 @@ func _process(delta):
 		texture_battery.value -= battery_drain * delta
 	if texture_battery.value == 0 && visible == true:
 		visible = false
-		texture_battery.visible = false
+		#texture_battery.visible = false
+	if Input.is_action_just_pressed("senter") && GlobalScript.have_senter && texture_battery.value <= 0:
+		$toggle_empty.play()
+		await $toggle_empty.finished
+		
 		

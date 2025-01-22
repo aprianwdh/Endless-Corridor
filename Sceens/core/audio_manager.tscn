@@ -24,8 +24,8 @@ volume_db = 24.0
 
 [node name="run" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_bqsw8")
-volume_db = 24.0
+volume_db = 20.0
 
 [node name="walk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qubc4")
-volume_db = 24.0
+volume_db = 20.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjklwgvsq1ljg"]
+[gd_scene load_steps=11 format=3 uid="uid://cjklwgvsq1ljg"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_o2ypo"]
 [ext_resource type="Script" path="res://Scripts/Player/head.gd" id="2_dpndm"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://csgg23nsaxfww" path="res://Asets/sfx/toggle_senter.mp3" id="4_agrad"]
 [ext_resource type="Script" path="res://Scripts/Player/RayCastPlayer.gd" id="4_ijieg"]
 [ext_resource type="PackedScene" uid="uid://blljlasnkoknk" path="res://Sceens/UI/ui_manager.tscn" id="4_xa3uv"]
+[ext_resource type="AudioStream" uid="uid://dosj3n4wkw277" path="res://Asets/sfx/Flashlight off.wav" id="5_r2ipe"]
 [ext_resource type="Texture2D" uid="uid://bgsw3rrr4qw2h" path="res://Asets/2d/croshair3.png" id="6_k51x6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bcypb"]
@@ -41,6 +42,10 @@ script = ExtResource("3_fk3yw")
 [node name="toggle" type="AudioStreamPlayer" parent="head/senter"]
 stream = ExtResource("4_agrad")
 pitch_scale = 2.0
+
+[node name="toggle_empty" type="AudioStreamPlayer" parent="head/senter"]
+stream = ExtResource("5_r2ipe")
+volume_db = 20.0
 
 [node name="RayCastPlayer" type="RayCast3D" parent="head"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

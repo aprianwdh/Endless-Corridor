@@ -11,6 +11,10 @@ var sprint_recharge_amount = 0.2
 @onready var senter = $head/senter
 @onready var texture_paper = $UI_Manager/TexturePaper
 
+var is_walking_sound_playing = false  # Melacak status suara langkah kaki
+var is_running_sound_playing = false  # Melacak status suara sprint
+
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -62,11 +66,14 @@ func move_player(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+			
+
 
 func sprint(delta):
-	if GlobalScript.player_movable == true:
-	#mengatur energi sprint
-		if SPEED == sprint_speed:
+	var input_dir = Input.get_vector("gerak_kiri","gerak_kanan","gerak_bawah","gerak_atas")
+	if GlobalScript.player_movable == true :
+		# Mengatur energi sprint
+		if SPEED == sprint_speed && input_dir:
 			sprint_slider.value -= sprint_drain_amount * delta
 			if sprint_slider.value == sprint_slider.min_value:
 				SPEED = original_speed
@@ -75,15 +82,39 @@ func sprint(delta):
 				sprint_slider.value += sprint_recharge_amount * delta
 			if sprint_slider.value == sprint_slider.max_value:
 				sprint_slider.hide()
-			
-	#input button sprint
-		if Input.is_action_just_pressed("sprint"):
+		
+		# Handle sprint input
+		if Input.is_action_just_pressed("sprint") && input_dir:
 			SPEED = sprint_speed
 			sprint_slider.show()
-			AudioManager.play_run()
-		if Input.is_action_just_released("sprint"):
+			if not is_running_sound_playing:
+				AudioManager.play_run()
+				is_running_sound_playing = true
+			if is_walking_sound_playing:
+				AudioManager.stop_walk()
+				is_walking_sound_playing = false
+		elif Input.is_action_just_released("sprint"):
 			SPEED = original_speed
-			AudioManager.stop_run()
+			if is_running_sound_playing:
+				AudioManager.stop_run()
+				is_running_sound_playing = false
+		
+		# Handle movement input
+		var movement_keys = ["gerak_atas", "gerak_bawah", "gerak_kanan", "gerak_kiri"]
+		var is_moving = false
+		for key in movement_keys:
+			if Input.is_action_pressed(key):
+				is_moving = true
+				break
+
+		if is_moving:
+			if not is_walking_sound_playing and SPEED != sprint_speed:
+				AudioManager.play_walk()
+				is_walking_sound_playing = true
+		else:
+			if is_walking_sound_playing:
+				AudioManager.stop_walk()
+				is_walking_sound_playing = false
 
 
 func _on_paper_paper_oon():
@@ -92,13 +123,15 @@ func _on_paper_paper_oon():
 
 func _on_paper_paper_off():
 	texture_paper.hide()
-	
-func Audio_walk_and_sprint():
-	if SPEED == sprint_speed:
-		AudioManager.play_run()
-		AudioManager.stop_walk()
-	elif SPEED != sprint_speed:
-		AudioManager.stop_run()
-		AudioManager.play_walk()
-	
-		
+	#
+#func _input(event):
+	#if event.is_action_pressed("gerak_atas"):
+		#AudioManager.play_walk()
+	#elif event.is_action_pressed("gerak_bawah"):
+		#AudioManager.play_walk()
+	#elif event.is_action_pressed("gerak_kanan"):
+		#AudioManager.play_walk()
+	#elif event.is_action_pressed("gerak_kiri"):
+		#AudioManager.play_walk()
+	#else :
+		#AudioManager.stop_walk()
