@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dtscjf0qnv8ft"]
+[gd_scene load_steps=39 format=3 uid="uid://dtscjf0qnv8ft"]
 
 [ext_resource type="Script" path="res://Scripts/Core/test_world.gd" id="1_5nuu6"]
 [ext_resource type="Material" uid="uid://b3rfw12cou2ft" path="res://Asets/Material/floor.tres" id="2_56oa0"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://xvwxb0vu8pvh" path="res://Asets/2d/face_scare.jpg" id="15_in38f"]
 [ext_resource type="PackedScene" uid="uid://yons3c8atxwe" path="res://Sceens/UI/pause_menu.tscn" id="17_g1ym6"]
 [ext_resource type="PackedScene" uid="uid://cfbejeyefsgyv" path="res://Sceens/items/battery.tscn" id="18_7akuv"]
+[ext_resource type="PackedScene" uid="uid://0fadum7qak08" path="res://Sceens/items/paint.tscn" id="19_lth8r"]
+[ext_resource type="Material" uid="uid://dqbsauxxlpfuh" path="res://Asets/Material/scary_paint1.tres" id="20_g0cg1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mdnhx"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -362,8 +364,17 @@ shape = SubResource("ConcavePolygonShape3D_ckqsn")
 [node name="meja" parent="NavigationRegion3D" instance=ExtResource("6_j4htx")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -10.9801, 0.684222, 19.7068)
 
-[node name="battery" parent="." instance=ExtResource("18_7akuv")]
+[node name="node_battery" type="Node3D" parent="."]
+
+[node name="battery" parent="node_battery" instance=ExtResource("18_7akuv")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -10.5962, 1.54096, 19.732)
+
+[node name="battery2" parent="node_battery" instance=ExtResource("18_7akuv")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -10.5962, 1.54096, 19.9862)
+
+[node name="paint" parent="." instance=ExtResource("19_lth8r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.2879, 2.74061, 19.6952)
+texture_paint = ExtResource("20_g0cg1")
 
 [connection signal="paper_off" from="paper" to="player" method="_on_paper_paper_off"]
 [connection signal="paper_oon" from="paper" to="player" method="_on_paper_paper_oon"]
