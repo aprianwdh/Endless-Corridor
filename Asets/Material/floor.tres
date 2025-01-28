@@ -1,5 +1,8 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b3rfw12cou2ft"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b3rfw12cou2ft"]
+
+[ext_resource type="Texture2D" uid="uid://o18nc7j0peyy" path="res://Asets/2d/floor_tx.jpg" id="1_1gg1v"]
 
 [resource]
-albedo_color = Color(0.326341, 0.0317799, 0.0263699, 1)
-uv2_scale = Vector3(100, 100, 100)
+albedo_texture = ExtResource("1_1gg1v")
+uv2_scale = Vector3(16, 16, 16)
+uv2_offset = Vector3(10, 0, 0)
